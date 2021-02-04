@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.PropertiesFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:padding="3dp"
+        android:id="@+id/idRelative"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/semi_white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textSize="@dimen/properties_size"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="İlan No"/>
+        <TextView
+            android:textSize="@dimen/properties_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_alignParentEnd="true"
+            android:text="54545454"/>
+
+    </RelativeLayout>
+
+        <RelativeLayout
+            android:padding="3dp"
+            android:id="@+id/dateRelative"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/idRelative"
+            app:layout_constraintStart_toStartOf="@id/idRelative"
+            app:layout_constraintEnd_toEndOf="@id/idRelative"
+            android:orientation="horizontal">
+
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="İlan Tarihi"/>
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="11 Kasım 2020"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:background="@color/semi_white"
+            android:id="@+id/konumRelative"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/dateRelative"
+            app:layout_constraintStart_toStartOf="@id/dateRelative"
+            app:layout_constraintEnd_toEndOf="@id/dateRelative"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Konum"/>
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="İstanbul / Üsküdar"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+
+            android:id="@+id/modelRelative"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/konumRelative"
+            app:layout_constraintStart_toStartOf="@id/konumRelative"
+            app:layout_constraintEnd_toEndOf="@id/konumRelative"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Model"/>
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Scala 1.6 TDI SCR Premium DSG"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:background="@color/semi_white"
+            android:id="@+id/kmRelative"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/modelRelative"
+            app:layout_constraintStart_toStartOf="@id/modelRelative"
+            app:layout_constraintEnd_toEndOf="@id/modelRelative"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Kilometre"/>
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="0"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/colorRelative"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/kmRelative"
+            app:layout_constraintStart_toStartOf="@id/kmRelative"
+            app:layout_constraintEnd_toEndOf="@id/kmRelative"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Renk"/>
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Gri"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+
+            android:background="@color/semi_white"
+            android:id="@+id/yearRelative"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/colorRelative"
+            app:layout_constraintStart_toStartOf="@id/colorRelative"
+            app:layout_constraintEnd_toEndOf="@id/colorRelative"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Yıl"/>
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="2020"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/gearRelative"
+            android:padding="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/yearRelative"
+            app:layout_constraintStart_toStartOf="@id/yearRelative"
+            app:layout_constraintEnd_toEndOf="@id/yearRelative"
+            android:orientation="horizontal">
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:textColor="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Vites"/>
+            <TextView
+                android:textSize="@dimen/properties_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Düz"/>
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

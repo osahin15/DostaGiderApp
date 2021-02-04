@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.ListingFragment"
+    android:background="@color/background">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nested"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:text="dostagider.com"
+                android:textColor="@color/main"
+                android:textSize="28sp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/carRecycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_list"
+                android:layout_marginTop="3dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="35dp"
+        app:menu_showShadow="true"
+        app:menu_colorPressed="@color/main"
+        app:menu_colorRipple="@color/white"
+        app:menu_labels_showAnimation="@anim/fab_slide_in_from_left"
+        app:menu_labels_hideAnimation="@anim/fab_slide_out_to_left"
+        app:menu_labels_position="left"
+        app:menu_labels_colorNormal="@color/main"
+        app:menu_animationDelayPerItem="50"
+        app:menu_colorNormal="@color/main"
+        app:menu_openDirection="up"
+        app:menu_icon="@drawable/menu">
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/filter"
+            app:fab_colorPressed="#424242"
+            app:fab_label="Filtrele"
+            app:fab_size="mini"
+            app:fab_colorNormal="#424242"
+            />
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sort"
+            app:fab_colorPressed="#424242"
+            app:fab_label="Sırala"
+            app:fab_size="mini"
+            app:fab_colorNormal="#424242"
+            />
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
