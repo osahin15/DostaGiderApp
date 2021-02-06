@@ -4,6 +4,9 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class ListModel {
+
+
+
     data class ListEntity(
         @Expose
         @SerializedName("id")

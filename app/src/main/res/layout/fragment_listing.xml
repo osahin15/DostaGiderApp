@@ -7,46 +7,78 @@
     tools:context=".view.ListingFragment"
     android:background="@color/background">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/nested"
+
+
+    <Toolbar
+        android:elevation="8dp"
+        android:background="@color/main"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/baloo"
+            android:text="dostagider.com"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:padding="10dp"
+            android:layout_marginTop="13dp"
+            android:gravity="center"
+            android:layout_marginStart="10dp"
+            tools:ignore="MissingConstraints" />
+    </Toolbar>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:visibility="gone"
+        android:id="@+id/carRecycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_list"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ProgressBar
+        android:id="@+id/progressList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:shimmer_duration="1800"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/placeholder_item_list"/>
+            <include layout="@layout/placeholder_item_list"/>
+            <include layout="@layout/placeholder_item_list"/>
+            <include layout="@layout/placeholder_item_list"/>
+            <include layout="@layout/placeholder_item_list"/>
+            <include layout="@layout/placeholder_item_list"/>
+            <include layout="@layout/placeholder_item_list"/>
 
-            <TextView
-                android:id="@+id/toolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/baloo"
-                android:text="dostagider.com"
-                android:textColor="@color/main"
-                android:textSize="28sp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/carRecycler"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_list"
-                android:layout_marginTop="3dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/toolbar"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
-
-
+        </LinearLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/fab_menu"

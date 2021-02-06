@@ -7,13 +7,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.hawksappstudio.dostagiderapp.R
+import com.hawksappstudio.dostagiderapp.databinding.FragmentPropertiesBinding
+import com.hawksappstudio.dostagiderapp.databinding.FragmentTextBinding
+import com.hawksappstudio.dostagiderapp.viewmodel.DetailViewModel
 import kotlinx.android.synthetic.main.fragment_text.*
 
 
 class TextFragment : Fragment() {
 
-
+    lateinit var binding : FragmentTextBinding
+    private val detailViewModel : DetailViewModel by viewModels({requireParentFragment()})
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,17 +30,29 @@ class TextFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_text, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_text,container,false)
+
+        detailViewModel.detailLiveData.observe(viewLifecycleOwner,{
+            it.let {
+                if (it !=null){
+                    fromHtmltoString(it.text)
+                }
+            }
+        })
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var textDeneme =  "<p style=\"text-align: center;\"><font face=\"arial black, sans-serif\" size=\"4\" color=\"#ff0000\">URARTU AUTO</font></p><p style=\"text-align: center;\">RENAULT CLİO 1.5 DCİ JOY&#xa0;</p><p style=\"text-align: center;\">ARACIMIZIN İÇ DIŞ KONDÜSYONU OLDUKÇA DÜZGÜNDÜR</p><p style=\"text-align: center;\">SIFIRDAN FARKSIZDIR.</p><p style=\"text-align: center;\">HERHNAGİ BİR EKSİĞİ YOKTUR</p><p style=\"text-align: center;\">ORJİNAL 7.800 KM DE&#xa0;</p><p style=\"text-align: center;\">KİTAPÇIKLARI VE YEDEK ANAHTARI MEVCUTTUR.</p><p style=\"text-align: center;\"><font size=\"5\" color=\"#ff0000\" face=\"arial black, sans-serif\">HATASIZDIR&#xa0;</font></p><p style=\"text-align: center;\"><font size=\"5\" color=\"#ff0000\" face=\"arial black, sans-serif\">TRAMERSİZ</font></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><font face=\"comic sans ms, sans-serif\" size=\"5\">ALICISINA HAYIRLI OLSUN:)</font></p><p style=\"text-align: center;\"><br></p>"
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            aciklama_text.setText(Html.fromHtml(textDeneme, Html.FROM_HTML_MODE_COMPACT))
+    }
+
+    fun fromHtmltoString(text:String){
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            binding.text = Html.fromHtml(text, Html.FROM_HTML_MODE_COMPACT).toString()
         } else {
-            aciklama_text.setText(Html.fromHtml(textDeneme))
+            binding.text = Html.fromHtml(text).toString()
         }
     }
 }

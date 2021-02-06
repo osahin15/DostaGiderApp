@@ -3,6 +3,11 @@ package com.hawksappstudio.dostagiderapp.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
+
+
+
+
+
 data class PropertiesEntity(
     @Expose
     @SerializedName("name")

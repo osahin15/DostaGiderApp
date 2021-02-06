@@ -1,114 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="@color/main_semi"
-    app:behavior_hideable="true"
-    android:padding="10dp"
-    tools:context=".view.SortBottomSheet">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-   <TextView
-       android:padding="5dp"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Sırala"
-       android:textAlignment="center"
-       android:textSize="20sp"
-       android:textStyle="bold"
-       android:textColor="@color/black"
-      />
-   <View
-       android:layout_width="match_parent"
-       android:layout_height="5dp"
-       android:layout_marginStart="4dp"
-       android:layout_marginEnd="4dp"
-       android:background="@color/black"/>
-   <TextView
-       android:id="@+id/priceAscending"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Fiyata Göre - Yükselen"
-       android:textColor="@color/white"
-      android:layout_margin="4dp"
-       android:padding="5dp"/>
-   <View
-       android:layout_width="match_parent"
-       android:layout_height="2dp"
-       android:layout_marginStart="4dp"
-       android:layout_marginEnd="4dp"
-       android:background="@color/white"/>
-   <TextView
-       android:id="@+id/priceDescending"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Fiyata Göre - Azalan"
-       android:textColor="@color/white"
-       android:layout_margin="4dp"
-       android:padding="5dp"/>
-   <View
-       android:layout_width="match_parent"
-       android:layout_height="2dp"
-       android:layout_marginStart="4dp"
-       android:layout_marginEnd="4dp"
-       android:background="@color/white"/>
-   <TextView
-       android:id="@+id/dateAscending"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="İlan Tarihine Göre - Yükselen"
-       android:textColor="@color/white"
-       android:layout_margin="4dp"
-       android:padding="5dp"/>
-   <View
-       android:layout_width="match_parent"
-       android:layout_height="2dp"
-       android:layout_marginStart="4dp"
-       android:layout_marginEnd="4dp"
-       android:background="@color/white"/>
-   <TextView
-       android:id="@+id/dateDescending"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="İlan Tarihine Göre - Azalan"
-       android:textColor="@color/white"
-       android:layout_margin="4dp"
-       android:padding="5dp"/>
-   <View
-       android:layout_width="match_parent"
-       android:layout_height="2dp"
-       android:layout_marginStart="4dp"
-       android:layout_marginEnd="4dp"
-       android:background="@color/white"/>
-   <TextView
-       android:id="@+id/yearAscending"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Model Yılına Göre - Yükselen"
-       android:textColor="@color/white"
-       android:layout_margin="4dp"
-       android:padding="5dp"/>
-   <View
-       android:layout_width="match_parent"
-       android:layout_height="2dp"
-       android:layout_marginStart="4dp"
-       android:layout_marginEnd="4dp"
-       android:background="@color/white"/>
-   <TextView
-       android:id="@+id/yearDescending"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="Model Yılına Göre - Azalan"
-       android:textColor="@color/white"
-       android:layout_margin="4dp"
-       android:padding="5dp"/>
-   <View
-       android:layout_width="match_parent"
-       android:layout_height="2dp"
-       android:layout_marginStart="4dp"
-       android:layout_marginEnd="4dp"
-       android:background="@color/white"/>
+   <data>
+      <variable
+          name="listener"
+          type="com.hawksappstudio.dostagiderapp.utils.SortClickListener" />
 
-</LinearLayout>
+   </data>
+
+   <LinearLayout
+       android:id="@+id/linearMain"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:background="@color/main_semi"
+       app:behavior_hideable="true"
+       android:padding="10dp"
+       tools:context=".view.SortBottomSheet">
+
+
+
+      <TextView
+          android:padding="5dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Sırala"
+          android:textAlignment="center"
+          android:textSize="20sp"
+          android:textStyle="bold"
+          android:textColor="@color/black" />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="5dp"
+          android:layout_marginStart="4dp"
+          android:layout_marginEnd="4dp"
+          android:background="@color/black" />
+
+      <TextView
+          android:id="@+id/dateAscending"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Varsayılan Sıralama"
+          android:textColor="@color/white"
+          android:onClick="@{listener::onSortClick}"
+          android:focusable="true"
+          android:clickable="true"
+          android:layout_margin="4dp"
+          android:padding="5dp" />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginStart="4dp"
+          android:layout_marginEnd="4dp"
+          android:background="@color/white" />
+
+      <TextView
+          android:id="@+id/priceAscending"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Fiyata Göre - Yükselen"
+          android:onClick="@{listener::onSortClick}"
+          android:focusable="true"
+          android:clickable="true"
+          android:textColor="@color/white"
+          android:layout_margin="4dp"
+          android:padding="5dp"
+           />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginStart="4dp"
+          android:layout_marginEnd="4dp"
+          android:background="@color/white" />
+
+      <TextView
+          android:id="@+id/priceDescending"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Fiyata Göre - Azalan"
+          android:textColor="@color/white"
+          android:onClick="@{listener::onSortClick}"
+          android:focusable="true"
+          android:clickable="true"
+          android:layout_margin="4dp"
+          android:padding="5dp" />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginStart="4dp"
+          android:layout_marginEnd="4dp"
+          android:background="@color/white" />
+
+
+
+      <TextView
+          android:id="@+id/dateDescending"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="İlan Tarihine Göre - Azalan"
+          android:onClick="@{listener::onSortClick}"
+          android:focusable="true"
+          android:clickable="true"
+          android:textColor="@color/white"
+          android:layout_margin="4dp"
+          android:padding="5dp" />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginStart="4dp"
+          android:layout_marginEnd="4dp"
+          android:background="@color/white" />
+
+      <TextView
+          android:id="@+id/yearAscending"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Model Yılına Göre - Yükselen"
+          android:textColor="@color/white"
+          android:onClick="@{listener::onSortClick}"
+          android:focusable="true"
+          android:clickable="true"
+          android:layout_margin="4dp"
+          android:padding="5dp" />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginStart="4dp"
+          android:layout_marginEnd="4dp"
+          android:background="@color/white" />
+
+      <TextView
+          android:id="@+id/yearDescending"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Model Yılına Göre - Azalan"
+          android:textColor="@color/white"
+          android:onClick="@{listener::onSortClick}"
+          android:focusable="true"
+          android:clickable="true"
+          android:layout_margin="4dp"
+          android:padding="5dp" />
+
+      <View
+          android:layout_width="match_parent"
+          android:layout_height="2dp"
+          android:layout_marginStart="4dp"
+          android:layout_marginEnd="4dp"
+          android:background="@color/white" />
+
+   </LinearLayout>
+</layout>

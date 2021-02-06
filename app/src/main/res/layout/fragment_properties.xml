@@ -1,236 +1,321 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.PropertiesFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <import type="java.util.Map"/>
+        <variable
+            name="propertiesItem"
+            type="com.hawksappstudio.dostagiderapp.model.DetailModel.DetailEntity" />
+
+        <variable name="propertiesMap" type="Map&lt;String, String>"/>
+
+    </data>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        tools:context=".view.PropertiesFragment">
 
-    <RelativeLayout
-        android:padding="3dp"
-        android:id="@+id/idRelative"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/semi_white"
-        android:orientation="horizontal">
-
-        <TextView
-            android:textSize="@dimen/properties_size"
-            android:textColor="@color/black"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:text="İlan No"/>
-        <TextView
-            android:textSize="@dimen/properties_size"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_alignParentEnd="true"
-            android:text="54545454"/>
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
 
-    </RelativeLayout>
+            <RelativeLayout
+                android:padding="3dp"
+                android:id="@+id/idRelative"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@color/semi_white"
+                android:orientation="horizontal">
 
-        <RelativeLayout
-            android:padding="3dp"
-            android:id="@+id/dateRelative"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/idRelative"
-            app:layout_constraintStart_toStartOf="@id/idRelative"
-            app:layout_constraintEnd_toEndOf="@id/idRelative"
-            android:orientation="horizontal">
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="İlan No" />
 
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="İlan Tarihi"/>
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="11 Kasım 2020"/>
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_alignParentEnd="true"
+                    android:text="@{String.valueOf(propertiesItem.id)}" />
 
-        </RelativeLayout>
-        <RelativeLayout
-            android:background="@color/semi_white"
-            android:id="@+id/konumRelative"
-            android:padding="3dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/dateRelative"
-            app:layout_constraintStart_toStartOf="@id/dateRelative"
-            app:layout_constraintEnd_toEndOf="@id/dateRelative"
-            android:orientation="horizontal">
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Konum"/>
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="İstanbul / Üsküdar"/>
+            </RelativeLayout>
 
-        </RelativeLayout>
-        <RelativeLayout
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
 
-            android:id="@+id/modelRelative"
-            android:padding="3dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/konumRelative"
-            app:layout_constraintStart_toStartOf="@id/konumRelative"
-            app:layout_constraintEnd_toEndOf="@id/konumRelative"
-            android:orientation="horizontal">
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:padding="3dp"
+                android:id="@+id/dateRelative"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Model"/>
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="Scala 1.6 TDI SCR Premium DSG"/>
+                android:orientation="horizontal">
 
-        </RelativeLayout>
-        <RelativeLayout
-            android:background="@color/semi_white"
-            android:id="@+id/kmRelative"
-            android:padding="3dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/modelRelative"
-            app:layout_constraintStart_toStartOf="@id/modelRelative"
-            app:layout_constraintEnd_toEndOf="@id/modelRelative"
-            android:orientation="horizontal">
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Kilometre"/>
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="0"/>
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="İlan Tarihi" />
 
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/colorRelative"
-            android:padding="3dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/kmRelative"
-            app:layout_constraintStart_toStartOf="@id/kmRelative"
-            app:layout_constraintEnd_toEndOf="@id/kmRelative"
-            android:orientation="horizontal">
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Renk"/>
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="Gri"/>
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="@{propertiesItem.dateFormatted}" />
 
-        </RelativeLayout>
-        <RelativeLayout
+            </RelativeLayout>
 
-            android:background="@color/semi_white"
-            android:id="@+id/yearRelative"
-            android:padding="3dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/colorRelative"
-            app:layout_constraintStart_toStartOf="@id/colorRelative"
-            app:layout_constraintEnd_toEndOf="@id/colorRelative"
-            android:orientation="horizontal">
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <RelativeLayout
+                android:background="@color/semi_white"
+                android:id="@+id/konumRelative"
+                android:padding="3dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Yıl"/>
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:layout_width="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Konum" />
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text='@{propertiesItem.location.cityName+"/"+propertiesItem.location.townName}' />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <RelativeLayout
+
+                android:id="@+id/modelRelative"
+                android:padding="3dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="2020"/>
+                android:orientation="horizontal">
 
-        </RelativeLayout>
-        <RelativeLayout
-            android:id="@+id/gearRelative"
-            android:padding="3dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/yearRelative"
-            app:layout_constraintStart_toStartOf="@id/yearRelative"
-            app:layout_constraintEnd_toEndOf="@id/yearRelative"
-            android:orientation="horizontal">
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:textColor="@color/black"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Model" />
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text="@{propertiesItem.modelName}" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <RelativeLayout
+                android:background="@color/semi_white"
+                android:id="@+id/kmRelative"
+                android:padding="3dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="Vites"/>
-            <TextView
-                android:textSize="@dimen/properties_size"
-                android:layout_width="wrap_content"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Kilometre" />
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text='@{propertiesMap.km != null ? propertiesMap.km : "girilmedi" }' />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <RelativeLayout
+                android:id="@+id/colorRelative"
+                android:padding="3dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="Düz"/>
+                android:orientation="horizontal">
 
-        </RelativeLayout>
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Renk" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text='@{propertiesMap.color != null ? propertiesMap.color : "girilmedi" }' />
 
-</ScrollView>
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <RelativeLayout
+
+                android:background="@color/semi_white"
+                android:id="@+id/yearRelative"
+                android:padding="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Yıl" />
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text='@{propertiesMap.year != null ? propertiesMap.year : "girilmedi" }' />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <RelativeLayout
+                android:id="@+id/gearRelative"
+                android:padding="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Vites" />
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text='@{propertiesMap.gear != null ? propertiesMap.gear : "girilmedi" }' />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+            <RelativeLayout
+                android:id="@+id/fuelRelative"
+                android:padding="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:textColor="@color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Yakıt" />
+
+                <TextView
+                    android:textSize="@dimen/properties_size"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:text='@{propertiesMap.fuel != null ? propertiesMap.fuel : "girilmedi" }' />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>
