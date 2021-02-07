@@ -21,6 +21,11 @@ interface ArabamApi {
     @GET("api/v1/detail")
     fun getDetail(@Query("id")id:Int) : Single<DetailEntity>
 
+    @GET("api/v1/listing")
+    fun getFilterList(@Query("minYear")minYear:Int,@Query("maxYear")maxYear:Int,@Query("take")take:Int
+                      ,@Query("skip")skip:Int) : Single<List<ListEntity>>
+
+
 
 
     companion object{

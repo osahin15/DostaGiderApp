@@ -13,7 +13,7 @@ import io.reactivex.disposables.CompositeDisposable
 class CarDataSource(private val disposable: CompositeDisposable,
                     private val arabamService : ArabamApi,
                     private val sort:Int,
-                    private val sortDirection:Int
+                    private val sortDirection:Int,
 
 ) : PageKeyedDataSource<Int, ListEntity>() {
 

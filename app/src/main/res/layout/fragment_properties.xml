@@ -16,9 +16,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.PropertiesFragment">
+        tools:context=".view.PropertiesFragment"
+        tools:ignore="ScrollViewCount">
+
 
         <LinearLayout
+            android:id="@+id/linearProperties"
+            android:visibility="visible"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -287,6 +291,7 @@
             <RelativeLayout
                 android:id="@+id/fuelRelative"
                 android:padding="3dp"
+                android:background="@color/semi_white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -316,6 +321,9 @@
                 android:background="@color/white" />
 
         </LinearLayout>
+
+
+
 
     </ScrollView>
 </layout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="userInfo"
+            type="com.hawksappstudio.dostagiderapp.model.DetailModel.UserInfoEntity" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".view.UserInfoBottomFragment">
+
+
+        <TextView
+            android:id="@+id/userName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{userInfo.nameSurname}"
+            android:textSize="20sp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="15dp"
+            android:background="@color/shimmer_bg" />
+
+        <LinearLayout
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cep No:"
+                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"
+                android:padding="5dp" />
+
+            <TextView
+                android:id="@+id/cepNoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{userInfo.phoneFormatted}"
+                android:textSize="18sp"
+                android:layout_gravity="center"
+                android:textColor="@color/link_blue"
+                android:layout_margin="10dp"
+                android:padding="5dp" />
+
+            <Button
+                android:id="@+id/callButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/call_green"
+                android:text="Ara"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

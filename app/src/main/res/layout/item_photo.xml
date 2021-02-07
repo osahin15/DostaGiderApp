@@ -7,19 +7,24 @@
         <variable
             name="photoItem"
             type="String" />
+        <variable
+            name="listener"
+            type="com.hawksappstudio.dostagiderapp.utils.PhotoItemClickListener" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:onClick="@{listener::photoItemClick}">
 
 
         <ImageView
             android:id="@+id/photoImageView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
             android:downloadBigPhoto="@{photoItem}"
             android:adjustViewBounds="true"
             app:layout_constraintBottom_toBottomOf="parent"

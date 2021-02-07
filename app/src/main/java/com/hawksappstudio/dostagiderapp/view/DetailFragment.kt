@@ -65,7 +65,6 @@ class DetailFragment : Fragment() {
         photoViewPager.adapter = photoViewPagerAdapter
 
 
-
         photoViewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         TabLayoutMediator(dotsIndicator,photoViewPager){tab,position->
         }.attach()
@@ -87,6 +86,13 @@ class DetailFragment : Fragment() {
 
         binding.backButton.setOnClickListener {
             activity?.onBackPressed()
+        }
+
+        binding.userInfoButton.setOnClickListener {
+            val userBottomSheet = UserInfoBottomFragment()
+            if (!userBottomSheet.isVisible){
+                userBottomSheet.show(childFragmentManager,"sort")
+            }
         }
 
 

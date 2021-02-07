@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.hawksappstudio.dostagiderapp.R
 import com.hawksappstudio.dostagiderapp.databinding.FragmentSortBottomSheetBinding
-import com.hawksappstudio.dostagiderapp.utils.SortClickListener
+import com.hawksappstudio.dostagiderapp.utils.*
 import com.hawksappstudio.dostagiderapp.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_listing.*
 
@@ -49,12 +49,12 @@ class SortBottomSheet : BottomSheetDialogFragment(),SortClickListener{
 
         listViewModel.clearCar()
         when(view){
-            binding.yearAscending->listViewModel.loadList(2,0)
-            binding.yearDescending->listViewModel.loadList(2,1)
-            binding.dateAscending -> listViewModel.loadList(1,0)
-            binding.dateDescending->listViewModel.loadList(1,1)
-            binding.priceAscending->listViewModel.loadList(0,0)
-            binding.priceDescending->listViewModel.loadList(0,1)
+            binding.yearAscending->listViewModel.loadList(YEAR, ASCENDING)
+            binding.yearDescending->listViewModel.loadList(YEAR, DESCENDING)
+            binding.dateAscending -> listViewModel.loadList(DATE, ASCENDING)
+            binding.dateDescending->listViewModel.loadList(DATE, DESCENDING)
+            binding.priceAscending->listViewModel.loadList(PRICE, ASCENDING)
+            binding.priceDescending->listViewModel.loadList(PRICE, DESCENDING)
             else -> Log.d("sortClick", "onSortClick: Fail")
         }
         dismiss()

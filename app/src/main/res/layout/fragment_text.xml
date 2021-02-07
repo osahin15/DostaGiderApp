@@ -10,6 +10,7 @@
     </data>
 
     <ScrollView
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:context=".view.TextFragment">
@@ -20,7 +21,7 @@
             android:id="@+id/aciklama_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:textColor="@color/black"
             android:text="@{text}"/>
     </ScrollView>

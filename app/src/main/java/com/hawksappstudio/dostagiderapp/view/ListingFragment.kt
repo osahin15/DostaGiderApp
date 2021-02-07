@@ -15,10 +15,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.hawksappstudio.dostagiderapp.R
 import com.hawksappstudio.dostagiderapp.adapter.CarListingAdapter
+import com.hawksappstudio.dostagiderapp.utils.ASCENDING
+import com.hawksappstudio.dostagiderapp.utils.DATE
 import com.hawksappstudio.dostagiderapp.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.custom_alert_dialog.*
 import kotlinx.android.synthetic.main.custom_alert_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_listing.*
+import kotlin.math.max
 
 
 class ListingFragment : Fragment() {
@@ -26,15 +29,18 @@ class ListingFragment : Fragment() {
     private lateinit var  carListingAdapter: CarListingAdapter
 
     lateinit var recycler : RecyclerView
+
     private lateinit var  listViewModel:ListViewModel
 
     private lateinit var shimmer : ShimmerFrameLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("listingFragment", "onCreate: listing")
+
+
         listViewModel = ViewModelProvider(this).get(ListViewModel::class.java)
 
-        listViewModel.loadList(1,0)
+        listViewModel.loadList(DATE, ASCENDING)
     }
 
     override fun onCreateView(
@@ -43,7 +49,7 @@ class ListingFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
        val view:View = inflater.inflate(R.layout.fragment_listing, container, false)
-        Log.d("listingFragment", "onCreateView: Listing Fragment ")
+
         carListingAdapter = CarListingAdapter()
         shimmer = view.findViewById(R.id.shimmer_layout)
         shimmer.startShimmer()
@@ -70,17 +76,8 @@ class ListingFragment : Fragment() {
 
         }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        Log.d("listingFragment", "onActivityCreated: listing")
 
-    }
 
-    fun menuVisible(): Boolean{
-        if (fab_menu.visibility == View.VISIBLE)
-            return true
-        return false
-    }
     private fun subscribeToList(){
 
 
@@ -113,15 +110,24 @@ class ListingFragment : Fragment() {
         super.onStop()
         shimmer_layout.stopShimmer()
     }
+
+    fun filterYear(minYear:Int,maxYear:Int){
+
+    }
         fun openFilter(){
             val mFilterDialog = LayoutInflater.from(context).inflate(R.layout.custom_alert_dialog,null)
 
-               var mBuilder =  AlertDialog.Builder(context).setView(mFilterDialog).setTitle("Yıla Göre Filtrele")
+           var mBuilder =     AlertDialog.Builder(context).setView(mFilterDialog).setTitle("Yıla Göre Filtrele")
                     .setPositiveButton("Uygula", DialogInterface.OnClickListener { dialog, which ->
+                        var minYear = mFilterDialog.filterMinYear.text.toString().toInt()
+                        var maxYear = mFilterDialog.filterMaxYear.text.toString().toInt()
+                        filterYear(minYear,maxYear)
 
                     }).setNegativeButton("Çık", DialogInterface.OnClickListener { dialog, which ->
                        dialog.dismiss()
                    }).show()
+
+            mBuilder.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = !(mFilterDialog.filterMinYear.text.isEmpty() && mFilterDialog.filterMaxYear.text.isEmpty())
         }
 
         fun openSorting(){
