@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical"
-        tools:context=".view.UserInfoBottomFragment">
+        tools:context=".view.detail.UserInfoBottomFragment">
 
 
         <TextView

@@ -3,8 +3,8 @@ package com.hawksappstudio.dostagiderapp.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.hawksappstudio.dostagiderapp.view.PropertiesFragment
-import com.hawksappstudio.dostagiderapp.view.TextFragment
+import com.hawksappstudio.dostagiderapp.view.detail.PropertiesFragment
+import com.hawksappstudio.dostagiderapp.view.detail.TextFragment
 
 class FragmentTabAdapter(fm:FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getCount(): Int {

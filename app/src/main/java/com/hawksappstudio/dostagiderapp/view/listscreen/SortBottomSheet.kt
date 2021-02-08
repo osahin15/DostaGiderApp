@@ -1,4 +1,4 @@
-package com.hawksappstudio.dostagiderapp.view
+package com.hawksappstudio.dostagiderapp.view.listscreen
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.hawksappstudio.dostagiderapp.R
 import com.hawksappstudio.dostagiderapp.databinding.FragmentSortBottomSheetBinding
@@ -46,7 +47,6 @@ class SortBottomSheet : BottomSheetDialogFragment(),SortClickListener{
     }
 
     override fun onSortClick(view: View) {
-
         listViewModel.clearCar()
         when(view){
             binding.yearAscending->listViewModel.loadList(YEAR, ASCENDING)

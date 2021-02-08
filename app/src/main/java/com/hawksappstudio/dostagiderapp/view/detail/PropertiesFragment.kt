@@ -1,4 +1,4 @@
-package com.hawksappstudio.dostagiderapp.view
+package com.hawksappstudio.dostagiderapp.view.detail
 
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.hawksappstudio.dostagiderapp.R
 import com.hawksappstudio.dostagiderapp.adapter.FragmentTabAdapter
 import com.hawksappstudio.dostagiderapp.databinding.FragmentPropertiesBinding
+
 import com.hawksappstudio.dostagiderapp.model.DetailModel
 import com.hawksappstudio.dostagiderapp.model.PropertiesEntity
 import com.hawksappstudio.dostagiderapp.viewmodel.DetailViewModel
@@ -23,7 +24,6 @@ class PropertiesFragment : Fragment() {
     lateinit var binding : FragmentPropertiesBinding
     private val detailViewModel : DetailViewModel by viewModels({requireParentFragment()})
 
-    private var carId : Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -37,7 +37,6 @@ class PropertiesFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_properties,container,false)
 
         detailViewModel.detailLiveData.observe(viewLifecycleOwner, { detailItem ->
-            Log.d("propertiesDetailItem", "onViewCreated: $detailItem")
             binding.propertiesItem = detailItem
             propertiesList(detailItem.properties)
         })
@@ -47,17 +46,14 @@ class PropertiesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
     }
 
-
+    //Properties --> Hashmap
     fun propertiesList(list : List<PropertiesEntity>){
         val hashMap = HashMap<String,String>()
         for (item in list){
             hashMap.put(item.name,item.value)
         }
-        Log.d("tagKM", "onCreateView: ${hashMap.get("km")}")
         binding.propertiesMap = hashMap
     }
 

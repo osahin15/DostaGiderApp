@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.hawksappstudio.dostagiderapp.R
 import com.hawksappstudio.dostagiderapp.adapter.CarListingAdapter
+import kotlinx.coroutines.withTimeoutOrNull
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,14 +1,18 @@
-package com.hawksappstudio.dostagiderapp.view
+package com.hawksappstudio.dostagiderapp.view.listscreen
 
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextUtils
+import android.text.TextWatcher
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.graphics.scaleMatrix
+import android.widget.EditText
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,7 +25,7 @@ import com.hawksappstudio.dostagiderapp.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.custom_alert_dialog.*
 import kotlinx.android.synthetic.main.custom_alert_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_listing.*
-import kotlin.math.max
+import java.util.*
 
 
 class ListingFragment : Fragment() {
@@ -33,6 +37,10 @@ class ListingFragment : Fragment() {
     private lateinit var  listViewModel:ListViewModel
 
     private lateinit var shimmer : ShimmerFrameLayout
+
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,7 +92,7 @@ class ListingFragment : Fragment() {
         listViewModel.carList
             .observe(viewLifecycleOwner, { list ->
                 progressList.visibility = View.GONE
-               shimmer.stopShimmer()
+                shimmer.stopShimmer()
                 shimmer.visibility = View.GONE
                 carRecycler.visibility = View.VISIBLE
                 carListingAdapter.submitList(list)
@@ -94,13 +102,28 @@ class ListingFragment : Fragment() {
             it.let {
                 if (it){
                     shimmer.startShimmer()
+                    shimmer.visibility = View.VISIBLE
                     progressList.visibility = View.VISIBLE
                     carRecycler.visibility = View.GONE
                 }else{
                     shimmer.stopShimmer()
+                    shimmer.visibility = View.GONE
                     progressList.visibility = View.GONE
                 }
 
+            }
+        })
+        listViewModel.errorList.observe(viewLifecycleOwner,{
+            it.let {
+                if (it){
+                    shimmer.stopShimmer()
+                    shimmer.visibility = View.GONE
+                    progressList.visibility = View.GONE
+                    carRecycler.visibility = View.GONE
+                    errorListing.visibility = View.VISIBLE
+                }else{
+                    errorListing.visibility = View.GONE
+                }
             }
         })
 
@@ -108,27 +131,86 @@ class ListingFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-        shimmer_layout.stopShimmer()
+        shimmer.stopShimmer()
     }
 
-    fun filterYear(minYear:Int,maxYear:Int){
-
+    override fun onResume() {
+        super.onResume()
+        shimmer.startShimmer()
     }
+
+
+   private fun filterYear(minYear:Int,maxYear:Int){
+            shimmer.startShimmer()
+            listViewModel.clearCar()
+            listViewModel.filterList(minYear,maxYear)
+    }
+
+
+
         fun openFilter(){
             val mFilterDialog = LayoutInflater.from(context).inflate(R.layout.custom_alert_dialog,null)
 
-           var mBuilder =     AlertDialog.Builder(context).setView(mFilterDialog).setTitle("Yıla Göre Filtrele")
-                    .setPositiveButton("Uygula", DialogInterface.OnClickListener { dialog, which ->
-                        var minYear = mFilterDialog.filterMinYear.text.toString().toInt()
-                        var maxYear = mFilterDialog.filterMaxYear.text.toString().toInt()
-                        filterYear(minYear,maxYear)
+           val filterMaxEdit = mFilterDialog.filterMaxYear
+           val filterMinEdit = mFilterDialog.filterMinYear
 
+            var minYear = 0
+            var maxYear = Calendar.getInstance().get(Calendar.YEAR) + 1
+
+
+            AlertDialog.Builder(context).setView(mFilterDialog).setTitle("Yıla Göre Filtrele")
+                    .setPositiveButton("Uygula", DialogInterface.OnClickListener { dialog, which ->
+
+
+                        Log.d("denemeTag", "openFilter: $minYear $maxYear")
+                        filterYear(minYear, maxYear)
                     }).setNegativeButton("Çık", DialogInterface.OnClickListener { dialog, which ->
                        dialog.dismiss()
                    }).show()
 
-            mBuilder.getButton(AlertDialog.BUTTON_POSITIVE).isEnabled = !(mFilterDialog.filterMinYear.text.isEmpty() && mFilterDialog.filterMaxYear.text.isEmpty())
+            filterMinEdit.addTextChangedListener(object  : TextWatcher{
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    if (filterMinEdit.text.isEmpty()){
+                        minYear = 0
+                    }else{
+                        minYear = filterMinEdit.text.toString().toInt()
+                    }
+                }
+
+            })
+            filterMaxEdit.addTextChangedListener(object  : TextWatcher{
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    if(filterMaxEdit.text.isEmpty()){
+                        //yanlış girilirse en çok mevcut yıl +1
+                        maxYear = Calendar.getInstance().get(Calendar.YEAR) + 1
+                    }else{
+                        maxYear = filterMaxEdit.text.toString().toInt()
+                    }
+                }
+
+            })
+
+
+
+
         }
+
 
         fun openSorting(){
             val sortingBottomSheet = SortBottomSheet()

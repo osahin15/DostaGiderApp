@@ -1,4 +1,4 @@
-package com.hawksappstudio.dostagiderapp.view
+package com.hawksappstudio.dostagiderapp.view.detail
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,28 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hawksappstudio.dostagiderapp.R
 import com.hawksappstudio.dostagiderapp.adapter.FragmentTabAdapter
 import com.hawksappstudio.dostagiderapp.adapter.PhotoViewPagerAdapter
 import com.hawksappstudio.dostagiderapp.databinding.FragmentDetailBinding
-import com.hawksappstudio.dostagiderapp.model.DetailModel
 import com.hawksappstudio.dostagiderapp.model.DetailModel.DetailEntity
 import com.hawksappstudio.dostagiderapp.viewmodel.DetailViewModel
-import kotlinx.android.synthetic.main.fragment_detail.*
-import kotlinx.android.synthetic.main.table_layout.view.*
 
 
 class DetailFragment : Fragment() {
 
 
    private lateinit var binding : FragmentDetailBinding
-
-    private var imagesList = mutableListOf<Int>()
-
 
     private lateinit var photoViewPagerAdapter: PhotoViewPagerAdapter
     private lateinit var fragmentTabAdapter: FragmentTabAdapter

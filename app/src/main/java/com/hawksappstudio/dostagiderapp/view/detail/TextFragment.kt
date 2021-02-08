@@ -1,4 +1,4 @@
-package com.hawksappstudio.dostagiderapp.view
+package com.hawksappstudio.dostagiderapp.view.detail
 
 import android.os.Build
 import android.os.Bundle
@@ -10,10 +10,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import com.hawksappstudio.dostagiderapp.R
-import com.hawksappstudio.dostagiderapp.databinding.FragmentPropertiesBinding
 import com.hawksappstudio.dostagiderapp.databinding.FragmentTextBinding
 import com.hawksappstudio.dostagiderapp.viewmodel.DetailViewModel
-import kotlinx.android.synthetic.main.fragment_text.*
 
 
 class TextFragment : Fragment() {
@@ -35,7 +33,7 @@ class TextFragment : Fragment() {
         detailViewModel.detailLiveData.observe(viewLifecycleOwner,{
             it.let {
                 if (it !=null){
-                    fromHtmltoString(it.text)
+                   fromHtmltoString(it.text)
                 }
             }
         })
@@ -46,7 +44,6 @@ class TextFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
     }
-
     fun fromHtmltoString(text:String){
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

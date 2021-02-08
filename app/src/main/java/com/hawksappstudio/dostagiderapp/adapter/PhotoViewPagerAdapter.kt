@@ -1,23 +1,18 @@
 package com.hawksappstudio.dostagiderapp.adapter
 
-import android.provider.ContactsContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.hawksappstudio.dostagiderapp.R
 import com.hawksappstudio.dostagiderapp.databinding.ItemPhotoBinding
-import com.hawksappstudio.dostagiderapp.utils.PhotoItemClickListener
-
-import com.hawksappstudio.dostagiderapp.utils.downloadBigUrl
-import kotlinx.android.synthetic.main.item_photo.view.*
+import com.hawksappstudio.dostagiderapp.utils.ItemClickListener
 
 class PhotoViewPagerAdapter(private var images : ArrayList<String>) :
-    RecyclerView.Adapter<PhotoViewPagerAdapter.PhotoViewHolder>(),PhotoItemClickListener {
+    RecyclerView.Adapter<PhotoViewPagerAdapter.PhotoViewHolder>(),ItemClickListener {
 
 
    inner class PhotoViewHolder(var view: ItemPhotoBinding) : RecyclerView.ViewHolder(view.root) {
@@ -34,7 +29,7 @@ class PhotoViewPagerAdapter(private var images : ArrayList<String>) :
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         holder.bind(images[position])
-        holder.view.listener = this
+        holder.view.listenerPhoto = this
 
     }
 
@@ -48,8 +43,8 @@ class PhotoViewPagerAdapter(private var images : ArrayList<String>) :
         notifyDataSetChanged()
     }
 
-    override fun photoItemClick(v: View) {
+    override fun itemClickListener(view: View) {
         val bundle = bundleOf("images" to images)
-        Navigation.findNavController(v).navigate(R.id.action_detailFragment_to_photoDetailFragment,bundle)
+        Navigation.findNavController(view).navigate(R.id.action_detailFragment_to_photoDetailFragment,bundle)
     }
 }

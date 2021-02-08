@@ -8,14 +8,14 @@
             name="listItem"
             type="com.hawksappstudio.dostagiderapp.model.ListModel.ListEntity" />
         <variable
-            name="listener"
-            type="com.hawksappstudio.dostagiderapp.utils.ListItemClickListener" />
+            name="listenerList"
+            type="com.hawksappstudio.dostagiderapp.utils.ItemClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{listener::listItemClick}"
+        android:onClick="@{listenerList::itemClickListener}"
         >
 
         <TextView

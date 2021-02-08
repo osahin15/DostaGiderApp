@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:hint="Örn. 2000"
             android:autofillHints="Örn. 2000"
-            android:textColor="@color/black"
+            android:textColor="@color/main"
             android:maxLines="1"
             android:padding="5dp"
             android:layout_margin="5dp"
@@ -60,11 +60,21 @@
             android:inputType="number"
             android:hint="Örn. 2021"
             android:autofillHints="Örn. 2021"
-            android:textColor="@color/black"
+            android:textColor="@color/main"
             android:layout_margin="5dp"
             android:maxLength="4"
             android:lines="1"
             android:padding="5dp"/>
     </LinearLayout>
+    <TextView
+        android:id="@+id/alertDialogError"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="10sp"
+        android:text="Yanlış Değer Girilmesi Durumunda Varsayılan En az:0 En çok:2022 !"
+        android:layout_gravity="center"
+        android:layout_marginBottom="5dp"/>
 
 </LinearLayout>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listingFragment"
-        android:name="com.hawksappstudio.dostagiderapp.view.ListingFragment"
+        android:name="com.hawksappstudio.dostagiderapp.view.listscreen.ListingFragment"
         android:label="ListingFragment" >
         <action
             android:id="@+id/action_listingFragment_to_detailFragment"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.hawksappstudio.dostagiderapp.view.DetailFragment"
+        android:name="com.hawksappstudio.dostagiderapp.view.detail.DetailFragment"
         android:label="DetailFragment" >
         <action
             android:id="@+id/action_detailFragment_to_listingFragment"
@@ -26,7 +26,7 @@
     </fragment>
     <fragment
         android:id="@+id/photoDetailFragment"
-        android:name="com.hawksappstudio.dostagiderapp.view.PhotoDetailFragment"
+        android:name="com.hawksappstudio.dostagiderapp.view.detail.PhotoDetailFragment"
         android:label="fragment_photo_detail"
         tools:layout="@layout/fragment_photo_detail" />
 </navigation>

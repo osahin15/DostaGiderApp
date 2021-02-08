@@ -18,7 +18,7 @@
        android:background="@color/main_semi"
        app:behavior_hideable="true"
        android:padding="10dp"
-       tools:context=".view.SortBottomSheet">
+       tools:context=".view.listscreen.SortBottomSheet">
 
 
 

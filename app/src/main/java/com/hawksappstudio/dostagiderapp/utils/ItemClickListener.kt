@@ -2,7 +2,7 @@ package com.hawksappstudio.dostagiderapp.utils
 
 import android.view.View
 
-interface PhotoItemClickListener {
+interface ItemClickListener {
 
-    fun photoItemClick(v:View)
+    fun itemClickListener(view:View)
 }

@@ -13,7 +13,7 @@
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".view.TextFragment">
+        tools:context=".view.detail.TextFragment">
 
 
         <TextView
@@ -23,6 +23,6 @@
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:textColor="@color/black"
-            android:text="@{text}"/>
+            android:text="@{text}" />
     </ScrollView>
 </layout>

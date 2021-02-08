@@ -1,29 +1,22 @@
 package com.hawksappstudio.dostagiderapp.adapter
 
-import android.content.Context
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.webkit.WebSettings
-import android.widget.TextView
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
-import androidx.paging.PagedList
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.hawksappstudio.dostagiderapp.R
 import com.hawksappstudio.dostagiderapp.databinding.ItemListBinding
-import com.hawksappstudio.dostagiderapp.model.ListModel
 import com.hawksappstudio.dostagiderapp.model.ListModel.ListEntity
-import com.hawksappstudio.dostagiderapp.utils.ListItemClickListener
+import com.hawksappstudio.dostagiderapp.utils.ItemClickListener
 import kotlinx.android.synthetic.main.item_list.view.*
 
 class CarListingAdapter : PagedListAdapter<ListEntity,CarListingAdapter.CarItemViewHolder>(
-    diffUtilCallBack),ListItemClickListener{
+    diffUtilCallBack),ItemClickListener{
 
     class CarItemViewHolder(var view:ItemListBinding) : RecyclerView.ViewHolder(view.root){
 
@@ -41,7 +34,7 @@ class CarListingAdapter : PagedListAdapter<ListEntity,CarListingAdapter.CarItemV
 
     override fun onBindViewHolder(holder: CarItemViewHolder, position: Int) {
        holder.bind(getItem(position))
-        holder.view.listener = this
+        holder.view.listenerList = this
     }
 
 
@@ -61,13 +54,11 @@ class CarListingAdapter : PagedListAdapter<ListEntity,CarListingAdapter.CarItemV
 
     }
 
-    override fun listItemClick(v: View) {
-        val carId = v.idText.text.toString().toInt()
+
+    override fun itemClickListener(view: View) {
+        val carId = view.idText.text.toString().toInt()
         val bundle = bundleOf("carId" to carId)
-
-
-
-        Navigation.findNavController(v).navigate(R.id.action_listingFragment_to_detailFragment,bundle)
+        Navigation.findNavController(view).navigate(R.id.action_listingFragment_to_detailFragment,bundle)
 
     }
 

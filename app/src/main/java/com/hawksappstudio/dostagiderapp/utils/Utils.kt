@@ -1,14 +1,14 @@
 package com.hawksappstudio.dostagiderapp.utils
 
 
+import android.os.Build
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
-
-
 import com.bumptech.glide.Glide
-
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.facebook.shimmer.Shimmer
 import com.facebook.shimmer.ShimmerDrawable
+import com.hawksappstudio.dostagiderapp.R
 
 
 const val YEAR = 2
@@ -35,7 +35,8 @@ fun ImageView.downloadListUrl(imageUrl:String?){
     Glide.with(context)
         .load(url)
         .placeholder(shimmerDrawable)
-        .error(shimmerDrawable                         )
+        .error(R.drawable.errorcar)
+            .transition(DrawableTransitionOptions.withCrossFade(2000))
         .into(this)
 
 }
@@ -52,7 +53,7 @@ fun ImageView.downloadBigUrl(imageUrl: String?){
     Glide.with(context)
         .load(url)
         .placeholder(shimmerDrawable)
-        .error(shimmerDrawable)
+        .error(R.drawable.errorcar)
         .into(this)
 
 }
@@ -69,7 +70,7 @@ fun ImageView.downloadBigDetailUrl(imageUrl: String?){
     Glide.with(context)
         .load(url)
         .placeholder(shimmerDrawable)
-        .error(shimmerDrawable)
+            .error(R.drawable.errorcar)
         .into(this)
 
 }
@@ -78,3 +79,4 @@ fun ImageView.downloadBigDetailUrl(imageUrl: String?){
 fun downloadBigDetailImage(view: ImageView,url: String?){
     view.downloadBigDetailUrl(url)
 }
+

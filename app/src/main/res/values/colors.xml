@@ -17,6 +17,7 @@
 
     <color name="background">#E4E4E4</color>
     <color name="semi_white">#4DE4E4E4</color>
-    <color name="shimmer_bg">#e7e7e7</color>
+
+    <color name="shimmer_bg">#DDDDDDDD</color>
 
 </resources>

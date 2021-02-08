@@ -45,12 +45,12 @@ class SplashScreen : AppCompatActivity() {
 
     fun showCustomDialog(){
         var dialog  = AlertDialog.Builder(this)
-        dialog.setMessage("Please connect to the internet proceed further")
+        dialog.setMessage("Lütfen internete bağlandıktan sonra devam edin")
             .setCancelable(false)
-            .setPositiveButton("Connect") { _,_ ->
+            .setPositiveButton("Bağlan") { _,_ ->
                 startActivity(Intent(Settings.ACTION_WIFI_SETTINGS))
                 finish()
-            }.setNegativeButton("Cancel") { _, _ ->
+            }.setNegativeButton("Çık") { _, _ ->
                 startActivity(Intent(this, SplashScreen::class.java))
                 finish()
             }.show()
