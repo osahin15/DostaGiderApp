@@ -35,6 +35,7 @@
 
 * Detail View Model üzerinden veri akışı sağlanıyor. ChildFragment yapısı kullanılarak  İlan bilgileri ve Text Fragment a requireParentfragment kullanılarak viewmodel instance yaratıldı
 kod tekrarı engellendi.
+* DataBinding kullanıldı.
 * Fotoğraf albüm için ViewPager2 kullanıldı. Click ile Full Screen Fotoğraf açılıyor.
 * TabLayout ve ViewPager ile ChildFragment e ulaşıldı.
 * Ara butonu ile açılan Bottom Sheet üzerinden CALL a yönlendirme.
